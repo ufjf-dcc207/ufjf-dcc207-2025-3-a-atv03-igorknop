@@ -1,0 +1,22 @@
+.exibicao {
+    color: green;
+    display: grid;
+    grid-template-areas:
+        "cercado cercado"
+        "inicio fim";
+    gap: 0.1rem;
+
+    .inicio {
+        grid-area: inicio;
+        background-color: lightgreen;
+    }
+    .fim{
+        grid-area: fim;
+        background-color: lightpink;
+
+    }
+    .cercado {
+        grid-area: cercado;
+        background-color: antiquewhite;
+    }
+}
