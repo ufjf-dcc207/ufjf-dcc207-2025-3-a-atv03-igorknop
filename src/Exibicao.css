@@ -3,18 +3,28 @@
     display: grid;
     grid-template-areas:
         "cercado cercado"
-        "inicio fim";
+        "inicio fim"
+        "animais animais";
     gap: 0.1rem;
+
+    .animais {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-area: animais;
+    }
+
 
     .inicio {
         grid-area: inicio;
         background-color: lightgreen;
     }
-    .fim{
+
+    .fim {
         grid-area: fim;
         background-color: lightpink;
 
     }
+
     .cercado {
         grid-area: cercado;
         background-color: antiquewhite;
