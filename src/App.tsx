@@ -1,44 +1,56 @@
 import Animal from './Animal'
 import './App.css'
 import Exibicao from './Exibicao'
-type ExibicaoTuplaType = [string, string, string, Array<AnimalTuplaType>];
-type AnimalTuplaType = [string, string, number, boolean];
+type ExibicaoType = {
+  inicio: string;
+  fim: string;
+  cercado: string;
+  animais: Array<AnimalType>
+};
+type AnimalType = {
+  icone: string;
+  nome: string;
+  peso: number;
+  emExtincao: boolean
+};
 function App() {
-  const exibicoes: Array<ExibicaoTuplaType> = [
-    ["2025-10-11T08:00:00-03:00",
-      "2025-10-11T12:00-03:00",
-      "ICE",
-      [
-        ['🦁', 'Leão', 190, true],
-        ['🦩', 'Flamingo', 12, true],
-      ]
-    ],
-    ["2025-10-11T13:00-013:00",
-      "2025-10-11T18:00-03:00",
-      'ICB',
-      [
-        ['🦒', 'Girafa', 1200, true],
-        ['🦜', 'Papagaio', 0.4, false]
-      ]
-    ]
-  ];
+  const exibicoes: Array<ExibicaoType> =
+    [{
+      inicio: "2025-10-11T08:00:00-03:00",
+      fim: "2025-10-11T12:00-03:00",
+      cercado: "ICE", animais:
+        [
+          { icone: '🦁', nome: 'Leão', peso: 190, emExtincao: true },
+          { icone: '🦩', nome: 'Flamingo', peso: 12, emExtincao: true }
+        ]
+    },
+    {
+      inicio: "2025-10-11T13:00-013:00",
+      fim: "2025-10-11T18:00-03:00",
+      cercado: 'ICB', animais:
+        [
+          { icone: '🦒', nome: 'Girafa', peso: 1200, emExtincao: true },
+          { icone: '🦜', nome: 'Papagaio', peso: 0.4, emExtincao: false }
+        ]
+    }
+    ];
 
   return (
     <div>
       {exibicoes.map(ex =>
-        <Exibicao 
-          key={ex[2]}
-          inicio={new Date(ex[0])}
-          fim={new Date(ex[1])}
-          cercado={ex[2]}>
-            {ex[3].map(an=><Animal 
-            key={an[1]}
-            nome={an[1]}
-            icone={an[0]}
-            peso={an[2]}
-            emExtincao={an[3]}
-            />)}
-          </Exibicao>
+        <Exibicao
+          key={ex.cercado}
+          inicio={new Date(ex.inicio)}
+          fim={new Date(ex.fim)}
+          cercado={ex.cercado}>
+          {ex.animais.map(an => <Animal
+            key={an.nome}
+            nome={an.nome}
+            icone={an.icone}
+            peso={an.peso}
+            emExtincao={an.emExtincao}
+          />)}
+        </Exibicao>
       )}
 
     </div >
