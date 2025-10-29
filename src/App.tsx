@@ -1,6 +1,8 @@
 import Animal from './Animal'
 import './App.css'
 import Exibicao from './Exibicao'
+import DADOS from "./exibicoes.json";
+
 type ExibicaoType = {
   inicio: string;
   fim: string;
@@ -15,25 +17,7 @@ type AnimalType = {
 };
 function App() {
   const exibicoes: Array<ExibicaoType> =
-    [{
-      inicio: "2025-10-11T08:00:00-03:00",
-      fim: "2025-10-11T12:00-03:00",
-      cercado: "ICE", animais:
-        [
-          { icone: '🦁', nome: 'Leão', peso: 190, emExtincao: true },
-          { icone: '🦩', nome: 'Flamingo', peso: 12, emExtincao: true }
-        ]
-    },
-    {
-      inicio: "2025-10-11T13:00-013:00",
-      fim: "2025-10-11T18:00-03:00",
-      cercado: 'ICB', animais:
-        [
-          { icone: '🦒', nome: 'Girafa', peso: 1200, emExtincao: true },
-          { icone: '🦜', nome: 'Papagaio', peso: 0.4, emExtincao: false }
-        ]
-    }
-    ];
+    DADOS;
 
   return (
     <div>
