@@ -3,7 +3,7 @@ import './App.css'
 import Exibicao from './Exibicao'
 type AnimalTuplaType = [string, string, number, boolean];
 function App() {
-  const exibicao1:AnimalTuplaType[] = [
+  const exibicao1: Array<AnimalTuplaType> = [
     ['🦁', 'Leão', 190, true],
     ['🦩', 'Flamingo', 12, true],
     ['🦒', 'Girafa', 1200, true]
@@ -11,22 +11,19 @@ function App() {
   const exibicao2 = [
     ['🦜', 'Papagaio', 0.4, false]
   ];
-  const elementosAnimais = [];
-  for (let i = 0; i < exibicao1.length; i++) {
-    elementosAnimais.push(
-      <Animal
-        key={exibicao1[i][1]}
-        icone={exibicao1[i][0]}
-        nome={exibicao1[i][1]}
-        peso={exibicao1[i][2]}
-        emExtincao={exibicao1[i][3]} />)
-  }
+  
   return (
     <div>
       <Exibicao inicio={new Date("2025-10-11T08:00:00-03:00")}
         fim={new Date("2025-10-11T12:00-03:00")}
         cercado='ICE'>
-        {elementosAnimais}
+        {exibicao1.map((tupla) => <Animal
+          key={tupla[1]}
+          icone={tupla[0]}
+          nome={tupla[1]}
+          peso={tupla[2]}
+          emExtincao={tupla[3]}
+        />)}
 
       </Exibicao>
       <Exibicao inicio={new Date("2025-10-11T13:00-013:00")}
