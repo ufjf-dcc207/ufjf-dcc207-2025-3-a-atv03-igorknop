@@ -1,31 +1,38 @@
 import Animal from './Animal'
 import './App.css'
 import Exibicao from './Exibicao'
-
+type AnimalTuplaType = [string, string, number, boolean];
 function App() {
-  const exibicao1 = [
-    <Animal icone='🦁' nome='Leão' peso={190} emExtincao={true} />,
-    <Animal icone='🦩' nome='Flamingo' peso={12} emExtincao={true} />,
-    <Animal icone='🦒' nome='Girafa' peso={1200} emExtincao={true} />
+  const exibicao1:AnimalTuplaType[] = [
+    ['🦁', 'Leão', 190, true],
+    ['🦩', 'Flamingo', 12, true],
+    ['🦒', 'Girafa', 1200, true]
   ];
-
   const exibicao2 = [
-        <Animal icone='🦜' nome='Papagaio' peso={0.4} emExtincao={false} />
-
+    ['🦜', 'Papagaio', 0.4, false]
   ];
-
+  const elementosAnimais = [];
+  for (let i = 0; i < exibicao1.length; i++) {
+    elementosAnimais.push(
+      <Animal
+        key={exibicao1[i][1]}
+        icone={exibicao1[i][0]}
+        nome={exibicao1[i][1]}
+        peso={exibicao1[i][2]}
+        emExtincao={exibicao1[i][3]} />)
+  }
   return (
     <div>
       <Exibicao inicio={new Date("2025-10-11T08:00:00-03:00")}
         fim={new Date("2025-10-11T12:00-03:00")}
         cercado='ICE'>
-          {exibicao1}
+        {elementosAnimais}
 
       </Exibicao>
       <Exibicao inicio={new Date("2025-10-11T13:00-013:00")}
         fim={new Date("2025-10-11T18:00-03:00")}
         cercado='ICB'>
-          {exibicao2}
+        {exibicao2}
       </Exibicao>
 
     </div>
